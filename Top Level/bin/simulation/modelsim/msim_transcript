@@ -1,0 +1,70 @@
+# Reading C:/altera/13.0/modelsim_ase/tcl/vsim/pref.tcl 
+# do MaquinaEstados_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src {C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MaquinaEstados
+# 
+# Top level modules:
+# 	MaquinaEstados
+# 
+vlog -reportprogress 300 -work work C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/Bloco.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Bloco
+# 
+# Top level modules:
+# 	Bloco
+vlog -reportprogress 300 -work work C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/emissor.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module emissor
+# 
+# Top level modules:
+# 	emissor
+vlog -reportprogress 300 -work work C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MaquinaEstados
+# 
+# Top level modules:
+# 	MaquinaEstados
+vlog -reportprogress 300 -work work C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/ouvinte.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ouvinte
+# 
+# Top level modules:
+# 	ouvinte
+vsim +altera -do MaquinaEstados_run_msim_rtl_verilog.do -l msim_transcript -gui work.Bloco
+# vsim +altera -do MaquinaEstados_run_msim_rtl_verilog.do -l msim_transcript -gui work.Bloco 
+# Loading work.Bloco
+# do MaquinaEstados_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src {C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MaquinaEstados
+# 
+# Top level modules:
+# 	MaquinaEstados
+# 
+do C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/data/Teste
+# .main_pane.wave.interior.cs.body.pw.wf
+# 1
+# 1
+add wave -position 1 -format Logic -height 17 -editable 2 Edit:/Bloco/CLK
+add wave -position 2 -format Logic -height 17 -editable 2 Edit:/Bloco/CLR
+add wave -position 3 -autoscale 1 -format Literal -height 17 -editable 2 Edit:/Bloco/CPU_event
+add wave -position 4 -format Logic -height 17 -editable 2 Edit:/Bloco/Controle
+run -all

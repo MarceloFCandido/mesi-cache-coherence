@@ -1,0 +1,17 @@
+module Bloco(CLK, CLR, CPU_event, BUS_out, state_out, Controle)
+
+	input CLK, CLR;
+	input [4:0] CPU_event;
+	output [5:0] BUS;
+	output [2:0] state;
+	
+	
+	wire [5:0] BUS;
+	wire [2:0] state;
+	
+	
+
+
+
+
+endmodule

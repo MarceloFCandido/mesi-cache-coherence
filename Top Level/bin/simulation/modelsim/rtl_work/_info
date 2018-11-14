@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\aluno\Documents\Trabalhando\mesi-cache-coherence\bin\simulation\modelsim
+vMaquinaEstados
+!i10b 1
+!s100 _R9LD0G5z0>N1KNOTT:OT2
+I<E5MV0fVGTDT<DAFkZJcK3
+VZ[OE0ljl;a80n8SC7XnYA3
+Z1 dC:\Users\aluno\Documents\Trabalhando\mesi-cache-coherence\bin\simulation\modelsim
+w1542189738
+8C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v
+FC:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v
+L0 1
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1542191367.189000
+!s107 C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src|C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src/MaquinaEstados.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+C:/Users/aluno/Documents/Trabalhando/mesi-cache-coherence/src -O0
+n@maquina@estados
