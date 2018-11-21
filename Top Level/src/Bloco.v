@@ -1,16 +1,16 @@
-module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
+module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 
 	input CLK, CLR, Controle;
 	input [4:0] CPU_event;
-	output [5:0] BUS_out;
-	output [2:0] state_out;
+	output reg[5:0] BUS;
+	output reg [2:0] state;
 	
 	
-	reg [5:0] BUS;
-	reg [2:0] state;
+//	reg [5:0] BUS;
+//	reg [2:0] state;
 	
-	assign BUS_out = BUS;
-	assign state_out = state;
+//	assign BUS_out = BUS;
+//	assign state_out = state;
 	
 	// Cinco bits para os eventos da CPU
 	// 4 		3 		2 		1		0
@@ -30,6 +30,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 			BUS = 6'b000_000;
 		end else begin
 			if(~Controle)begin
+			BUS = 6'b000000;
 				case (state) 
 					3'b001: begin // Invalid
 						// NADA
@@ -42,7 +43,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 							5'b00100: begin // write miss
 								state = 3'b001; // vai para invalid
 							end
-							5'b00001: begin
+							5'b00001: begin // read miss
 								// NADA
 							end
 						endcase
@@ -66,7 +67,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 								state = 3'b010; // vai para shared
 								BUS = {3'b010, 3'b001}; // abort memory access/ write-back block
 							end
-							5'b00100: begin
+							5'b00100: begin	//Write miss
 								state = 3'b010; // vai para shared
 								BUS = {3'b010, 3'b001}; // abort memory access/ write-back block
 							end
@@ -74,22 +75,6 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 					end
 				endcase
 			end
-		end
-	end
-
-	
-	
-	//Emissor
-	// Sinais que podem passar pelo BUS
-	// 001 - read miss
-	// 010 - write miss
-	// 011 - write-back cache block
-	// 100 - invalidate
-	always @(posedge CLK, posedge CLR) begin
-		if (CLR) begin
-			state = 3'b001;
-			BUS = 6'b000000;
-		end else begin
 			if(Controle) begin
 				BUS = 6'b000000;
 				case (state)
@@ -165,7 +150,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 							end
 							5'b00001: begin // read miss
 								state = 3'b010;
-								BUS = {3'b010, 3'b011};
+								BUS = {3'b010, 3'b011}; //write miss, write-back
 							end
 						endcase
 					end
@@ -173,5 +158,22 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS_out, state_out);
 			end
 		end
 	end
+
+	
+	
+	//Emissor
+	// Sinais que podem passar pelo BUS
+	// 001 - read miss
+	// 010 - write miss
+	// 011 - write-back cache block
+	// 100 - invalidate
+//	always @(posedge CLK, posedge CLR) begin
+//		if (CLR) begin
+//			state = 3'b001;
+//			BUS = 6'b000000;
+//		end else begin
+//			
+//		end
+//	end
 
 endmodule
