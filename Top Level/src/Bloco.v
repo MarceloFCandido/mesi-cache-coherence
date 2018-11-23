@@ -167,7 +167,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 							end
 							5'b00001: begin // read miss
 								state = 3'b010;
-								BUS = {3'b010, 3'b011}; //read miss, write-back
+								BUS = {3'b001, 3'b011}; //read miss, write-back
 							end
 						endcase
 					end
