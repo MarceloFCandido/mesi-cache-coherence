@@ -4,25 +4,25 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 	input [4:0] CPU_event;
 	output reg[5:0] BUS;
 	output reg [2:0] state;
-	
-	
+
+
 //	reg [5:0] BUS;
 //	reg [2:0] state;
-	
+
 //	assign BUS_out = BUS;
 //	assign state_out = state;
-	
+
 	// Cinco bits para os eventos da CPU
 	// 4 		3 		2 		1		0
-	// inv   wh    wm    rh    rm
+	// inv      wh     wm       rh      rm
 	// sendo:
 	// - inv: 1 -> invalid
 	// - wh: 1 -> write hit
 	// - wm: 1 -> write miss
 	// - rh: 1 -> read hit
 	// - rm: 1 -> read miss
-	
-	
+
+
 	//Ouvinte
 	always @(posedge CLK, posedge CLR) begin
 		if (CLR) begin
@@ -31,7 +31,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 		end else begin
 			if(~Controle)begin
 			BUS = 6'b000000;
-				case (state) 
+				case (state)
 					3'b001: begin // Invalid
 						// NADA
 					end
@@ -125,7 +125,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 							5'b00010: begin // read hit
 								// Nada
 							end
-							5'b00001: begin // read miss 
+							5'b00001: begin // read miss
 								state = 3'b010; // vai para shared
 							end
 							5'b01000: begin // write hit
@@ -159,8 +159,8 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 		end
 	end
 
-	
-	
+
+
 	//Emissor
 	// Sinais que podem passar pelo BUS
 	// 001 - read miss
@@ -172,7 +172,7 @@ module Bloco(CLK, CLR, Controle, CPU_event, BUS, state);
 //			state = 3'b001;
 //			BUS = 6'b000000;
 //		end else begin
-//			
+//
 //		end
 //	end
 
